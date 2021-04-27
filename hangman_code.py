@@ -29,13 +29,13 @@ def add_txt(movie,director):
 
 
 def get_valid_word():
-    words=get_txt()
+    words=get_txt()     # calls function get_txt
     word = random.choice(list(words.keys()))  # randomly chooses something from the list
-    return word.upper(),words[word.capitalize()]  # return word and the hint word(director)
+    return word.upper(),words[word]  # return word and the hint word(director)
 
 
 def initialize():
-    word , Hint= get_valid_word()
+    word , Hint= get_valid_word()         # get_valid_word function called
     word_letters = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     used_letters = set()  # what the user has guessed
@@ -57,7 +57,7 @@ def display(word_letters,used_letters,Hint,lives,word):
     # ' '.join(['a', 'b', 'cd']) --> 'a b cd'
     print('You have', lives, 'lives left and you have used these letters: ', ' '.join(used_letters))
     # what current word is (ie W - R D)
-    used_letters,word_letters=format_input(word_letters,used_letters)
+    used_letters,word_letters=format_input(word_letters,used_letters)                # format_input function called
     word_list = [letter if letter in used_letters else '-' for letter in word]
     print(lives_left[lives])
     print('Current word: ', ' '.join(word_list))
@@ -78,7 +78,7 @@ def update(user_letter,used_letters,word_letters,alphabet,lives):
             word_letters.remove(user_letter)
             print('')
         else:
-            lives = lives - 1  # takes away a life if wrong
+            lives = lives - 1      # takes away a life if wrong
             print('\nYour letter,', user_letter, 'is not in the word.')
     elif user_letter in used_letters:
         print('\nYou have already used that letter. Guess another letter.')
@@ -106,14 +106,14 @@ def user_contribution():
         exit()
 
 
-def hangman():         # call functions
+def hangman():    # to call functions
     word, Hint , word_letters, alphabet, used_letters, lives = initialize()
     while len(word_letters) > 0 and lives > 0:
-        display(word_letters, used_letters, Hint, lives, word)
-        user_letter = user_input(word_letters, lives)
-        used_letters,lives = update(user_letter, used_letters, word_letters, alphabet, lives)
-    end(lives, word)
-    user_contribution()
+        display(word_letters, used_letters, Hint, lives, word)      # display function called
+        user_letter = user_input(word_letters, lives)           # user_input function called
+        used_letters,lives = update(user_letter, used_letters, word_letters, alphabet, lives)   # update function called
+    end(lives, word)                  # end function called
+    user_contribution()        # user_contribution function called
 
 
 if __name__ == '__main__':
