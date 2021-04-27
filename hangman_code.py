@@ -2,6 +2,7 @@
 Hangman game : Movie
 Guess the name of movie based on the hint given
 Movies provided from the file 'words.txt'
+Allows user to add movies to 'words.txt'
 7 lives provided
 """
 
