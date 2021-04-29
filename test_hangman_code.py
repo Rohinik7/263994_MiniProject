@@ -1,6 +1,5 @@
 """Pytest for hangman_code"""
 
-from unittest import TestCase
 
 import hangman_code as h
 import random
