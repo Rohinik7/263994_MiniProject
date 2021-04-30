@@ -13,54 +13,54 @@ import string
 
 def get_txt():
     words = {}
-    movie_names = open('words.txt','r')       # get the movie names from the file words.txt
+    movie_names = open('words.txt', 'r')       # get the movie names from the file words.txt
     for line in movie_names:
-        line=line.strip("\n")
-        lst=list(map(str,line.split(":")))
-        key,value=lst[0],lst[1]
-        words[key]=value
+        line = line.strip("\n")
+        lst = list(map(str, line.split(":")))
+        key, value = lst[0], lst[1]
+        words[key] = value
     return words
 
 
-def add_txt(movie,director):
+def add_txt(movie, director):
     movie_names = open('words.txt', 'a')  # write movie name to the file words.txt
-    line = "\n{}:{}".format(movie,director)
+    line = "\n{}:{}".format(movie, director)
     movie_names.write(line)
 
 
 def get_valid_word(words):
     word = random.choice(list(words.keys()))  # randomly chooses something from the list
-    return word.upper(),words[word]  # return word and the hint word(director)
+    return word.upper(), words[word]  # return word and the hint word(director)
 
 
 def initialize():
     words = get_txt()
-    word , Hint= get_valid_word(words)
+    word, hint = get_valid_word(words)
     word_letters = set(word)  # letters in the word
     alphabet = set(string.ascii_uppercase)
     used_letters = set()  # what the user has guessed
     lives = 7
-    return word,Hint,word_letters,alphabet,used_letters,lives
+    return word, hint, word_letters, alphabet, used_letters, lives
 
 
-def format_input(word_letters,used_letters):
+def format_input(word_letters, used_letters):
     # Insert space between words
     if ' ' in word_letters:
         used_letters.add(' ')
         word_letters.remove(' ')
-    return used_letters,word_letters
+    return used_letters, word_letters
 
 
-def display(word_letters,used_letters,Hint,lives,word):
+def display(word_letters, used_letters, hint, lives, word):
     # getting user input
     # letters used
     # ' '.join(['a', 'b', 'cd']) --> 'a b cd'
     print('You have', lives, 'lives left and you have used these letters: ', ' '.join(used_letters))
     # what current word is (ie W - R D)
-    used_letters,word_letters=format_input(word_letters,used_letters)
+    used_letters, word_letters = format_input(word_letters, used_letters)
     word_list = [letter if letter in used_letters else '-' for letter in word]
     print('Current word: ', ' '.join(word_list))
-    print("Hint: Movie Director: ", Hint)
+    print("Hint: Movie Director: ", hint)
 
 
 def user_input():
@@ -69,7 +69,7 @@ def user_input():
     return user_letter
 
 
-def update(user_letter,used_letters,word_letters,alphabet,lives):
+def update(user_letter, used_letters, word_letters, alphabet, lives):
     # update the blanks if user guessed the letter
     if user_letter in alphabet - used_letters:
         used_letters.add(user_letter)
@@ -84,10 +84,10 @@ def update(user_letter,used_letters,word_letters,alphabet,lives):
         print('\nYou have already used that letter. Guess another letter.')
     else:
         print('\nThat is not a valid letter.')
-    return used_letters,lives
+    return used_letters, lives
 
 
-def end(lives,word):
+def end(lives, word):
     # gets here when len(word_letters) == 0 OR when lives == 0
     if lives == 0:
         print(lives_left[lives])
@@ -101,17 +101,17 @@ def user_contribution():
     if inp.lower() == "y":
         movie = input("Movie name: ")
         director = input("Director: ")
-        add_txt(movie,director)          # call function add_txt to write movie to file
+        add_txt(movie, director)          # call function add_txt to write movie to file
     else:
         exit()
 
 
 def hangman():         # call functions
-    word, Hint , word_letters, alphabet, used_letters, lives = initialize()
+    word, hint, word_letters, alphabet, used_letters, lives = initialize()
     while len(word_letters) > 0 and lives > 0:
-        display(word_letters, used_letters, Hint, lives, word)
+        display(word_letters, used_letters, hint, lives, word)
         user_letter = user_input()
-        used_letters,lives = update(user_letter, used_letters, word_letters, alphabet, lives)
+        used_letters, lives = update(user_letter, used_letters, word_letters, alphabet, lives)
     end(lives, word)
     user_contribution()
 
