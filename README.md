@@ -5,4 +5,7 @@
 * The user can add a movie to the file 'words.txt' if they wishes to.
 * The user is given the name of the movie director as a hint to help them guess the movie.
 
+![alt text](https://github.com/Rohinik7/263994_MiniProject/blob/main/logo.png?raw=true)
+
+
 
