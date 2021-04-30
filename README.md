@@ -9,7 +9,7 @@
 
 | Index | Files | Description|
 |-------|-------|------------|
-| 1 | hangman_code.py | This main file which needs to be run for playing the game |
+| 1 | hangman_code.py | This is the main file which needs to be run for playing the game |
 | 2 | hangman_draw.py | This file contains the various stages of hangman during the game and is imported in hangman_code.py |
 | 3 | words.txt | This text file contains the names of the movies from which the program randomly choose a name for user to guess |
 | 4 | test_hangman_code.py | This is the pytest file for the hangman_code.py file |
@@ -19,7 +19,7 @@
 * All the files must be stored in the same directory
 * Run the file hangman_code.py
 * Guess the letters in the given movie
-* There will be total of 7 lives. The lives will be reduced by 1 for each wrong guess.
+* The user will be provided a total of 7 lives. The lives will be reduced by 1 for each wrong guess.
 * For every wrong guess the hangman stage would be one step closer to losing and would be displayed.
 * The letters that user has already guessed would be displayed as well. If the user enters the same letter again, there will be no change in the state.
 * The blanks in the movie name will be updated with the corresponding letter if the user guessed the letter right.
