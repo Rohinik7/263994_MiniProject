@@ -6,10 +6,9 @@
 * The user is given the name of the movie director as a hint to help them guess the movie.
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/Rohinik7/263994_MiniProject/blob/main/logo.png?raw=true">
+  <img width="200" height="200" src="https://github.com/Rohinik7/263994_MiniProject/blob/main/logo.png?raw=true">
 </p>
 
-![alt text](https://github.com/Rohinik7/263994_MiniProject/blob/main/logo.png?raw=true)
 
 
 
